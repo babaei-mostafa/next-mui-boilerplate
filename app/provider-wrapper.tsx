@@ -1,8 +1,10 @@
-"use client"
+'use client'
+
+import { ReactElement, useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { ConfigProvider } from '@/contexts/ConfigContext'
 import ThemeCustomization from '@/themes'
-import { ReactElement } from 'react'
 
 // ==================== || PROVIDER WRAPPER || ==================== //
 
@@ -11,10 +13,13 @@ export default function ProviderWrapper({
 }: {
   children: ReactElement
 }) {
+  const [queryClient] = useState(() => new QueryClient())
   return (
     <ConfigProvider>
       <ThemeCustomization>
-        {children}
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
       </ThemeCustomization>
     </ConfigProvider>
   )
