@@ -1,7 +1,14 @@
-import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosResponse,
+  AxiosRequestConfig,
+  InternalAxiosRequestConfig,
+} from 'axios'
 import { clearAuth, getAccessToken, setAccessToken } from './authService'
 
-export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
+export interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   skipAuth?: boolean
   _retry?: boolean
 }
@@ -10,15 +17,40 @@ interface RefreshResponse {
   accessToken: string
 }
 
-const apiClient = axios.create({
+const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   withCredentials: true,
 })
 
-apiClient.interceptors.request.use((config: CustomAxiosRequestConfig) => {
+// --- Extend AxiosInstance with generics + skipAuth support ---
+export interface TypedAxiosInstance extends AxiosInstance {
+  get<T = any, R = AxiosResponse<T>>(
+    url: string,
+    config?: CustomAxiosRequestConfig
+  ): Promise<R>
+  post<T = any, R = AxiosResponse<T>>(
+    url: string,
+    data?: any,
+    config?: CustomAxiosRequestConfig
+  ): Promise<R>
+  put<T = any, R = AxiosResponse<T>>(
+    url: string,
+    data?: any,
+    config?: CustomAxiosRequestConfig
+  ): Promise<R>
+  delete<T = any, R = AxiosResponse<T>>(
+    url: string,
+    config?: CustomAxiosRequestConfig
+  ): Promise<R>
+}
+
+export const apiClient = client as TypedAxiosInstance
+
+apiClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const customConfig = config as CustomAxiosRequestConfig
   const token = getAccessToken()
 
-  if (!config.skipAuth && token) {
+  if (!customConfig.skipAuth && token) {
     config.headers = config.headers ?? {}
     config.headers.Authorization = `Bearer ${token}`
   }
