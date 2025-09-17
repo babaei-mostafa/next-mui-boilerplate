@@ -6,7 +6,20 @@ import axios, {
   AxiosRequestConfig,
   InternalAxiosRequestConfig,
 } from 'axios'
-import { clearAuth, getAccessToken, setAccessToken } from './authService'
+
+let accessToken: string | null = null
+
+function setAccessToken(token: string) {
+  accessToken = token
+}
+
+function getAccessToken() {
+  return accessToken
+}
+
+function clearAuth() {
+  accessToken = null
+}
 
 export interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   skipAuth?: boolean

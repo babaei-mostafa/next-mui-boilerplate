@@ -1,4 +1,4 @@
-import apiClient from '@/lib/api/apiClient'
+import apiClient from '@/lib/apiClient'
 import { LoginReq } from '@/types/auth'
 
 export const login = async (body: LoginReq): Promise<unknown> => {
