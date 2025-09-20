@@ -9,10 +9,14 @@ export const authService = {
     username,
     email,
     password,
+    first_name,
+    last_name,
   }: {
     username: string
     email: string
     password: string
+    first_name: string
+    last_name: string
   }) {
     await connectDB()
 
@@ -20,9 +24,21 @@ export const authService = {
     if (existing) throw new Error('Email already exists')
 
     const hashed = await bcrypt.hash(password, 10)
-    const user = await User.create({ username, email, password: hashed })
+    const user = await User.create({
+      username,
+      email,
+      password: hashed,
+      first_name,
+      last_name,
+    })
 
-    return { id: user._id, email: user.email, username: user.username }
+    return {
+      id: user._id,
+      email: user.email,
+      username: user.username,
+      first_name: user.first_name,
+      last_name: user.last_name,
+    }
   },
 
   async login({ email, password }: { email: string; password: string }) {

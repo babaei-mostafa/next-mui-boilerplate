@@ -1,6 +1,7 @@
 'use client'
 
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
@@ -12,9 +13,11 @@ import { useLoginMutation } from '@/hooks/react-query/auth/authHooks'
 export default function LoginForm() {
   const [loginBody, setLoginBody] = useState({ email: '', password: '' })
 
+  const router = useRouter()
+
   const { mutate: login, isPending } = useLoginMutation({
-    onSuccess: (data) => {
-      console.log(data)
+    onSuccess: () => {
+      router.push('/')
     },
   })
 
