@@ -22,7 +22,7 @@ const roboto = Roboto({
 
 export const HEADER_HEIGHT = 74
 
-// ==================== || THEME CONFIG || ==================== //
+// ====================|| THEME CONFIG ||==================== //
 
 const config: DefaultConfigProps = {
   fontFamily: roboto.style.fontFamily,

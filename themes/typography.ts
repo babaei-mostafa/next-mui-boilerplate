@@ -2,7 +2,7 @@ import { ThemeMode } from '@/config'
 import { FontFamily } from '@/types/config'
 import { TypographyVariantsOptions } from '@mui/material/styles'
 
-// ==================== || THEME - TYPOGRAPHY || ==================== //
+// ====================|| THEME - TYPOGRAPHY ||==================== //
 
 export default function Typography(
   mode: ThemeMode,

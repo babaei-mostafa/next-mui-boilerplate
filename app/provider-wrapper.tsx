@@ -1,12 +1,14 @@
 'use client'
 
 import { ReactElement, useState } from 'react'
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import { ConfigProvider } from '@/contexts/ConfigContext'
+import { ConfigProvider } from '@/contexts/config-context'
 import ThemeCustomization from '@/themes'
+import NotistackProvider from '@/components/common/snackbar/notistack'
 
-// ==================== || PROVIDER WRAPPER || ==================== //
+// ====================|| PROVIDER WRAPPER ||==================== //
 
 export default function ProviderWrapper({
   children,
@@ -18,7 +20,7 @@ export default function ProviderWrapper({
     <ConfigProvider>
       <ThemeCustomization>
         <QueryClientProvider client={queryClient}>
-          {children}
+          <NotistackProvider>{children}</NotistackProvider>
         </QueryClientProvider>
       </ThemeCustomization>
     </ConfigProvider>

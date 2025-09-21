@@ -11,7 +11,7 @@ import InputLabel from '@mui/material/InputLabel'
 import { useSignupMutation } from '@/hooks/react-query/auth/authHooks'
 import { SignupReq } from '@/types/auth'
 
-// ==================== || SIGNUP FORM || ==================== //
+// ====================|| SIGNUP FORM ||==================== //
 
 export default function SignupForm() {
   const [signupBody, setSignupBody] = useState<SignupReq>({

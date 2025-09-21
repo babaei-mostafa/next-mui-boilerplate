@@ -1,7 +1,7 @@
 import { ColorProps } from "@/types/extended"
 import { Theme } from "@mui/material/styles"
 
-// ==================== || CUSTOM FUNCTIONS - COLORS || ==================== //
+// ====================|| CUSTOM FUNCTIONS - COLORS ||==================== //
 
 export default function getColors(theme: Theme, color?: ColorProps) {
   switch (color!) {

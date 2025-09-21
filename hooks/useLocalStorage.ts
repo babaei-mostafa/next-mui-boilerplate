@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-// ==================== || HOOKS - LOCAL STORE || ==================== //
+// ====================|| HOOKS - LOCAL STORE ||==================== //
 
 export default function useLocalStorage<ValueType>(
   key: string,

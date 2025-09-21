@@ -4,7 +4,7 @@ import { PaletteThemeProps } from '@/types/theme'
 import { alpha, createTheme } from '@mui/material/styles'
 import { PaletteMode } from '@mui/material'
 
-// ==================== || PALETTE || ==================== //
+// ====================|| PALETTE ||==================== //
 
 export default function Palette(mode: ThemeMode) {
   const paletteColor: PaletteThemeProps = ThemeOption(mode)

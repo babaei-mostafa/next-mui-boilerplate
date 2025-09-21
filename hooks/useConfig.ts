@@ -1,9 +1,9 @@
 'use client'
 
 import { useContext } from 'react'
-import { ConfigContext } from '@/contexts/ConfigContext'
+import { ConfigContext } from '@/contexts/config-context'
 
-// ==================== || HOOKS - CONFIG || ==================== //
+// ====================|| HOOKS - CONFIG ||==================== //
 
 export default function useConfig() {
   const context = useContext(ConfigContext)

@@ -15,7 +15,7 @@ type ConfigProviderProps = {
   children: ReactElement
 }
 
-// ==================== || CONFIG CONTEXT & PROVIDER || ==================== //
+// ====================|| CONFIG CONTEXT & PROVIDER ||==================== //
 
 const ConfigContext = createContext(initialState)
 
