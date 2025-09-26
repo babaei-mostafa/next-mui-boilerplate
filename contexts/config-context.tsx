@@ -1,8 +1,15 @@
 'use client'
 
+<<<<<<< HEAD
 import { createContext, ReactElement, useEffect, useState } from 'react'
 import config, { ThemeDirection, ThemeMode } from '@/config'
 import { CustomizationProps } from '@/types/config'
+=======
+import config, { ThemeDirection, ThemeMode } from '@/config'
+import useLocalStorage from '@/hooks/useLocalStorage'
+import { CustomizationProps } from '@/types/config'
+import { createContext, ReactElement, useEffect, useState } from 'react'
+>>>>>>> 0343d73441b0ec20d38229b83ea6b77909e4bf1e
 
 const initialState: CustomizationProps = {
   ...config,
